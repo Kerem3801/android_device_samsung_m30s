@@ -1,30 +1,23 @@
-# Android fstab file.
-# The filesystem that contains the filesystem checker binary (typically /system) cannot
-# specify MF_CHECK, and must come before any filesystems that do specify MF_CHECK
-
-/boot               emmc    /dev/block/platform/13520000.ufs/by-name/boot          flags=display="Kernel Image";backup=1;flashimg=1
-/recovery           emmc    /dev/block/platform/13520000.ufs/by-name/recovery      flags=display="Recovery Image";backup=1;flashimg=1
-/system_image       emmc    /dev/block/platform/13520000.ufs/by-name/system        flags=display="System Image";backup=1;flashimg=1
-/vendor_image       emmc    /dev/block/platform/13520000.ufs/by-name/vendor        flags=display="Vendor Image";backup=1;flashimg=1
-/product_image      emmc    /dev/block/platform/13520000.ufs/by-name/product       flags=display="Product (OMC) Image";backup=1;flashimg=1
-/up_param           emmc    /dev/block/platform/13520000.ufs/by-name/up_param      flags=display="Splash Image";backup=1;flashimg=1
-/dtbo               emmc    /dev/block/platform/13520000.ufs/by-name/dtbo          flags=display="DTBO Image";backup=1;flashimg=1
-/dtb                emmc    /dev/block/platform/13520000.ufs/by-name/dtb           flags=display="DTB Image";backup=1;flashimg=1
-
-# System and Vendor (and Product) Points
-/system_root        ext4    /dev/block/platform/13520000.ufs/by-name/system        flags=display="System";backup=1;wipeingui
-/product            ext4    /dev/block/platform/13520000.ufs/by-name/product       flags=display="Product (OMC)";backup=1;wipeingui
-/vendor             ext4    /dev/block/platform/13520000.ufs/by-name/vendor        flags=display="Vendor";backup=1;wipeingui
-/system_root        erofs    /dev/block/platform/13520000.ufs/by-name/system        flags=display="System";backup=1;wipeingui
-/product            erofs    /dev/block/platform/13520000.ufs/by-name/product       flags=display="Product (OMC)";backup=1;wipeingui
-/vendor             erofs    /dev/block/platform/13520000.ufs/by-name/vendor        flags=display="Vendor";backup=1;wipeingui
-
-# Cache and ETC Points
-/cache              ext4    /dev/block/platform/13520000.ufs/by-name/cache         flags=display="Cache";backup=1;wipeingui
-/data               ext4    /dev/block/platform/13520000.ufs/by-name/userdata      
-/data               f2fs    /dev/block/platform/13520000.ufs/by-name/userdata      
-/efs                ext4    /dev/block/platform/13520000.ufs/by-name/efs           flags=display="EFS";backup=1
-
-# SDC and OTG Points
-/external_sd        vfat    /dev/block/mmcblk0p1  /dev/block/mmcblk0               flags=display="Micro SDcard";storage;wipeingui;removable
-/usb-otg            vfat    /dev/block/sdf1       /dev/block/sdf                   flags=display="USB-OTG";storage;wipeingui;removable
+/dev/block/platform/13520000.ufs/by-name/userdata       /data   ext4    noatime,nosuid,nodev,noauto_da_alloc,discard,journal_checksum,data=ordered,errors=panic    latemount,wait,check,quota,formattable,fileencryption=aes-256-xts:aes-256-cts:v2+inlinecrypt,reservedsize=128M
+/dev/block/platform/13520000.ufs/by-name/userdata       /data   f2fs    noatime,nosuid,nodev,discard,inline_xattr,flush_merge,nobarrier                           latemount,wait,check,quota,formattable,fileencryption=aes-256-xts:aes-256-cts:v2+inlinecrypt,reservedsize=128M
+/dev/block/platform/13520000.ufs/by-name/misc           /misc   emmc    defaults                                                                                  first_stage_mount
+/boot           emmc    /dev/block/platform/13520000.ufs/by-name/boot        flags=display="Boot Image";backup=1;flashimg=1
+/recovery       emmc    /dev/block/platform/13520000.ufs/by-name/recovery    flags=display="Recovery Image";backup=1;flashimg=1
+/dtb            emmc    /dev/block/platform/13520000.ufs/by-name/dtb         flags=display="DTB Image";backup=1;flashimg=1
+/dtbo           emmc    /dev/block/platform/13520000.ufs/by-name/dtbo        flags=display="DTBO Image";backup=1;flashimg=1
+/up_param       emmc    /dev/block/platform/13520000.ufs/by-name/up_param    flags=display="Splash Image";backup=1;flashimg=1
+/system         ext4    /dev/block/platform/13520000.ufs/by-name/system      flags=display="System";backup=1;wipeingui
+/system         erofs   /dev/block/platform/13520000.ufs/by-name/system      flags=display="System";backup=1;fsflags="ro,wait,slotselect";wipeingui
+/vendor         ext4    /dev/block/platform/13520000.ufs/by-name/vendor      flags=display="Vendor";backup=1;wipeingui
+/vendor         erofs   /dev/block/platform/13520000.ufs/by-name/vendor      flags=display="Vendor";backup=1;fsflags="ro,wait,slotselect";wipeingui
+/product        ext4    /dev/block/platform/13520000.ufs/by-name/product     flags=display="Product";backup=1;wipeingui
+/product        erofs   /dev/block/platform/13520000.ufs/by-name/product     flags=display="Product";backup=1;fsflags="ro,wait,slotselect";wipeingui
+/omr            ext4    /dev/block/platform/13520000.ufs/by-name/omr         flags=display="OMR";backup=1;wipeingui
+/system_image   emmc    /dev/block/platform/13520000.ufs/by-name/system      flags=display="System Image";backup=1;flashimg=1
+/vendor_image   emmc    /dev/block/platform/13520000.ufs/by-name/vendor      flags=display="Vendor Image";backup=1;flashimg=1
+/product_image  emmc    /dev/block/platform/13520000.ufs/by-name/product     flags=display="Product Image";backup=1;flashimg=1
+/omr_image      emmc    /dev/block/platform/13520000.ufs/by-name/omr         flags=display="OMR Image";backup=1;flashimg=1
+/efs            ext4    /dev/block/platform/13520000.ufs/by-name/efs         flags=display="EFS";backup=1
+/sec_efs        ext4    /dev/block/platform/13520000.ufs/by-name/sec_efs     flags=display="Sec EFS";backup=1
+/external_sd    auto    /dev/block/mmcblk0p1   /dev/block/mmcblk0            flags=display="MicroSD Card";storage;removable;wipeingui
+/usb-otg        auto    /dev/block/sdf1        /dev/block/sdf                flags=display="USB OTG";storage;removable;wipeingui
