@@ -1,13 +1,12 @@
-/dev/block/platform/13520000.ufs/by-name/userdata       /data   ext4    noatime,nosuid,nodev,noauto_da_alloc,discard,journal_checksum,data=ordered,errors=panic    latemount,wait,check,quota,formattable,fileencryption=aes-256-xts:aes-256-cts:v2+inlinecrypt,reservedsize=128M
-/dev/block/platform/13520000.ufs/by-name/userdata       /data   f2fs    noatime,nosuid,nodev,discard,inline_xattr,flush_merge,nobarrier                           latemount,wait,check,quota,formattable,fileencryption=aes-256-xts:aes-256-cts:v2+inlinecrypt,reservedsize=128M
-/dev/block/platform/13520000.ufs/by-name/misc           /misc   emmc    defaults                                                                                  first_stage_mount
+/data           f2fs	/dev/block/platform/13520000.ufs/by-name/userdata
+/misc		emmc	/dev/block/platform/13520000.ufs/by-name/misc	    	flags=backup=0;display="Misc"
 /boot           emmc    /dev/block/platform/13520000.ufs/by-name/boot        flags=display="Boot Image";backup=1;flashimg=1
 /recovery       emmc    /dev/block/platform/13520000.ufs/by-name/recovery    flags=display="Recovery Image";backup=1;flashimg=1
 /dtb            emmc    /dev/block/platform/13520000.ufs/by-name/dtb         flags=display="DTB Image";backup=1;flashimg=1
 /dtbo           emmc    /dev/block/platform/13520000.ufs/by-name/dtbo        flags=display="DTBO Image";backup=1;flashimg=1
 /up_param       emmc    /dev/block/platform/13520000.ufs/by-name/up_param    flags=display="Splash Image";backup=1;flashimg=1
-/system         ext4    /dev/block/platform/13520000.ufs/by-name/system      flags=display="System";backup=1;wipeingui
-/system         erofs   /dev/block/platform/13520000.ufs/by-name/system      flags=display="System";backup=1;fsflags="ro,wait,slotselect";wipeingui
+/system_root         ext4    /dev/block/platform/13520000.ufs/by-name/system      flags=display="System";backup=1;wipeingui
+/system_root        erofs   /dev/block/platform/13520000.ufs/by-name/system      flags=display="System";backup=1;fsflags="ro,wait,slotselect";wipeingui
 /vendor         ext4    /dev/block/platform/13520000.ufs/by-name/vendor      flags=display="Vendor";backup=1;wipeingui
 /vendor         erofs   /dev/block/platform/13520000.ufs/by-name/vendor      flags=display="Vendor";backup=1;fsflags="ro,wait,slotselect";wipeingui
 /product        ext4    /dev/block/platform/13520000.ufs/by-name/product     flags=display="Product";backup=1;wipeingui
