@@ -31,7 +31,7 @@ TARGET_2ND_CPU_ABI := armeabi-v7a
 TARGET_2ND_CPU_ABI2 := armeabi
 TARGET_2ND_CPU_VARIANT := cortex-a53
 TARGET_USES_64_BIT_BINDER := true
-
+TARGET_SUPPORTS_64_BIT_APPS := true
 ENABLE_CPUSETS := true
 ENABLE_SCHEDBOOST := true
 
@@ -110,6 +110,7 @@ RECOVERY_SDCARD_ON_DATA := true
 # Use mke2fs to create ext4 images
 TARGET_USES_MKE2FS := true
 
+TW_DEVICE_VERSION := Kerem_38
 # TWRP specific build flags
 TW_THEME := portrait_hdpi
 TW_BRIGHTNESS_PATH := "/sys/class/backlight/panel/brightness"
