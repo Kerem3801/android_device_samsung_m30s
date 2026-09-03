@@ -27,7 +27,6 @@
 /efs               ext4        /dev/block/platform/13520000.ufs/by-name/efs               flags=display="EFS";backup=1
 /sec_efs           ext4        /dev/block/platform/13520000.ufs/by-name/sec_efs           flags=display="Sec EFS";backup=1
 
-/data              ext4        /dev/block/platform/13520000.ufs/by-name/userdata          flags=display="Data";backup=1;wipeingui
 /data              f2fs        /dev/block/platform/13520000.ufs/by-name/userdata          flags=display="Data";backup=1;wipeingui
 
 /misc              emmc        /dev/block/platform/13520000.ufs/by-name/misc             flags=display="Misc"
