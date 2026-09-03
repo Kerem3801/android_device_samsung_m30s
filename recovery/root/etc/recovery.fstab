@@ -1,24 +1,8 @@
-/boot           emmc    /dev/block/platform/13520000.ufs/by-name/boot
-/cache          ext4	/dev/block/platform/13520000.ufs/by-name/cache  	flags=backup=1;
-/data           f2fs	/dev/block/platform/13520000.ufs/by-name/userdata
-/dtb            emmc    /dev/block/platform/13520000.ufs/by-name/dtb		flags=backup=1;display="DTB"
-/dtbo           emmc    /dev/block/platform/13520000.ufs/by-name/dtbo		flags=backup=1;display="DTBO"
-/efs	        ext4	/dev/block/platform/13520000.ufs/by-name/efs	    	flags=backup=1;display="EFS"
-/modem	      	emmc	/dev/block/platform/13520000.ufs/by-name/radio	  	flags=backup=1;display="Modem Firmware"
-/recovery       emmc    /dev/block/platform/13520000.ufs/by-name/recovery	flags=backup=1;flashimg
-/system         ext4    /dev/block/platform/13520000.ufs/by-name/system     flags=display="System";backup=1;wipeingui
-/system         erofs   /dev/block/platform/13520000.ufs/by-name/system     flags=display="System";backup=1;fsflags="ro,wait";wipeingui
-/vendor         ext4    /dev/block/platform/13520000.ufs/by-name/vendor     flags=display="Vendor";backup=1;wipeingui
-/vendor         erofs   /dev/block/platform/13520000.ufs/by-name/vendor     flags=display="Vendor";backup=1;fsflags="ro,wait";wipeingui
-/product        ext4    /dev/block/platform/13520000.ufs/by-name/product    flags=display="Product (OMC)";backup=1;wipeingui
-/product        erofs   /dev/block/platform/13520000.ufs/by-name/product    flags=display="Product (OMC)";fsflags="ro,wait";backup=1;wipeingui
-/omr            ext4    /dev/block/platform/13520000.ufs/by-name/omr        flags=display="OMR";backup=1;wipeingui
+# Android fstab file.
+#<src>                  <mnt_point>         <type>    <mnt_flags and options>                               <fs_mgr_flags>
+# The filesystem that contains the filesystem checker binary (typically /system) cannot
+# specify MF_CHECK, and must come before any filesystems that do specify MF_CHECK
 
-/system_image   emmc    /dev/block/platform/13520000.ufs/by-name/system     flags=display="System Image";backup=1;flashimg=1
-/vendor_image   emmc    /dev/block/platform/13520000.ufs/by-name/vendor     flags=display="Vendor Image";backup=1;flashimg=1
-/product_image  emmc    /dev/block/platform/13520000.ufs/by-name/product    flags=display="Product (OMC) Image";backup=1;flashimg=1
-/omr_image      emmc    /dev/block/platform/13520000.ufs/by-name/omr        flags=display="OMR Image";backup=1;flashimg=1
-/misc		emmc	/dev/block/platform/13520000.ufs/by-name/misc	    	flags=backup=0;display="Misc"
-
-/external_sd	vfat	/dev/block/mmcblk0p1 /dev/block/mmcblk0	         	flags=display="Micro SDcard";storage;wipeingui;removable
-/usb-otg	vfat	/dev/block/sdf1 /dev/block/sdf		         	flags=display="USB-OTG";storage;wipeingui;removable
+/dev/block/platform/13520000.ufs/by-name/userdata   /data   ext4    noatime,nosuid,nodev,noauto_da_alloc,discard,journal_checksum,data=ordered,errors=panic    latemount,wait,check,reservedsize=128M
+/dev/block/platform/13520000.ufs/by-name/userdata   /data   f2fs    noatime,nosuid,nodev,noauto_da_alloc,discard,journal_checksum,data=ordered,errors=panic    latemount,wait,check,reservedsize=128M
+/dev/block/platform/13520000.ufs/by-name/misc       /misc   emmc    defaults                                                                                   defaults,first_stage_mount
